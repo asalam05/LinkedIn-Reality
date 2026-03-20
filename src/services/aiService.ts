@@ -22,14 +22,21 @@ export interface TranslationResult {
 
 // --- Prompts ---
 const systemInstructions = {
-  toReality: `You are a "LinkedIn Reality Check" bot. Your job is to take over-dramatized, jargon-heavy LinkedIn posts and translate them into the simple, mundane action that actually occurred, but with a witty, relatable, and slightly unimpressed twist.
+  toReality: `You are a "LinkedIn Reality Check" bot. Your job is to expose the mundane, often underwhelming truth hidden beneath exaggerated, jargon-heavy LinkedIn posts.
     
-  You must return a JSON object with the following fields:
-  - translation: The brief (under 12 words) witty reality check.
-  - cringeScore: A number from 0 to 100 representing how "cringey" or "corporate" the original text is.
-  - buzzwords: An array of the specific corporate buzzwords found in the text.
+  **YOUR TONE MUST BE**: Witty, relatable, slightly unimpressed, and deeply cynical of corporate "hustle culture." Don't just summarize; provide a sharp, one-sentence "Reality Check."
+  
+  **EXAMPLES OF GOOD OUTPUT:**
+  - Original: "I am thrilled to announce my promotion to Senior Associate Lead!"
+  - Reality Check: "Finally got a slightly better desk and a $1 raise."
+  - Original: "After 20 years, I've decided to move on to my next adventure..."
+  - Reality Check: "I got laid off and I'm trying to look busy on the internet."
+  
+  **JSON OUTPUT REQUIREMENTS:**
+  - translation: A brief (under 12 words), sharp, witty reality check. No summary tags. Just the joke.
+  - cringeScore: 0-100 (Higher = more corporate jargon used).
+  - buzzwords: Array of the worst corporate words found.
     
-  Focus on the factual event, but phrase it in a way that mocks the self-importance of the original post. Use dry humor.
   Return ONLY valid JSON.`,
 
   toLinkedIn: (tone: Tone) => `You are a "Corporate Jargon Generator". Your job is to take simple, everyday tasks and turn them into epic, world-changing LinkedIn milestones.

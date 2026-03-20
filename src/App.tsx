@@ -147,10 +147,12 @@ export default function App() {
               <div className="flex items-end justify-between">
                 <div className="space-y-1">
                   <h2 className="text-2xl font-bold tracking-tight text-slate-900">
-                    {mode === 'toReality' ? 'LinkedIn Post' : 'The Reality'}
+                    {mode === 'toReality' ? 'LinkedIn Reality Check' : 'Corporate Jargonizer'}
                   </h2>
-                  <p className="text-slate-500 text-xs font-medium">
-                    {mode === 'toReality' ? 'Paste the LinkedIn post to de-fluff.' : 'Enter the simple truth to corporate-ify.'}
+                  <p className="text-slate-500 text-xs font-medium italic">
+                    {mode === 'toReality' 
+                      ? '🔎 Paste a cringey post to see the hidden truth.' 
+                      : '✨ Turn your mundane task into an "epic milestone".'}
                   </p>
                 </div>
                 <button 
@@ -166,7 +168,7 @@ export default function App() {
                 <textarea
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
-                  placeholder={mode === 'toReality' ? "Paste the cringey LinkedIn post here..." : "I fixed a bug in 5 minutes."}
+                  placeholder={mode === 'toReality' ? "Paste that cringey 'hustle' post here..." : "e.g. 'I fixed a typo' or 'I made a coffee'"}
                   className="w-full h-64 bg-slate-50 border border-slate-200 rounded-2xl p-6 text-lg leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-[#0A66C2]/20 focus:border-[#0A66C2] transition-all placeholder:text-slate-300"
                 />
                 <div className="absolute top-4 right-4 text-slate-200 group-hover:text-slate-400 transition-colors">
