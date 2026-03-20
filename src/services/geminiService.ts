@@ -12,7 +12,7 @@ export interface TranslationResult {
 }
 
 export const translateText = async (text: string, mode: TranslationMode, tone: Tone): Promise<TranslationResult> => {
-  const model = "gemini-3-flash-preview";
+  const model = "gemini-2.5-flash-lite";
   
   const systemInstructions = {
     toReality: `You are a "LinkedIn Reality Check" bot. Your job is to take over-dramatized, jargon-heavy LinkedIn posts and translate them into the simple, mundane action that actually occurred, but with a witty, relatable, and slightly unimpressed twist.

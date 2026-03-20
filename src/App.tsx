@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   ArrowRightLeft, 
@@ -15,9 +15,11 @@ import {
   Terminal,
   Linkedin,
   AlertCircle,
-  Hash
+  Hash,
+  Eye,
+  Activity
 } from 'lucide-react';
-import { translateText, TranslationMode, Tone, TranslationResult } from './services/geminiService';
+import { translateText, TranslationMode, Tone, TranslationResult } from './services/aiService';
 
 const TONES: { value: Tone; label: string; icon: React.ReactNode }[] = [
   { value: 'brutallyHonest', label: 'Brutally Honest', icon: <ShieldAlert className="w-4 h-4" /> },
@@ -34,12 +36,35 @@ export default function App() {
   const [tone, setTone] = useState<Tone>('sarcastic');
   const [isLoading, setIsLoading] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [visitors, setVisitors] = useState<number | null>(null);
+  const [totalChecks, setTotalChecks] = useState<number | null>(null);
+
+  useEffect(() => {
+    // Increment visitor count on load
+    fetch('https://api.counterapi.dev/v1/linkedin-reality-asalam/visitors/up')
+      .then(res => res.json())
+      .then(data => setVisitors(data.count))
+      .catch(() => {});
+
+    // Get current checks count
+    fetch('https://api.counterapi.dev/v1/linkedin-reality-asalam/checks')
+      .then(res => res.json())
+      .then(data => setTotalChecks(data.count))
+      .catch(() => {});
+  }, []);
 
   const handleTranslate = async () => {
     if (!inputText.trim()) return;
     setIsLoading(true);
     const translationResult = await translateText(inputText, mode, tone);
     setResult(translationResult);
+    
+    // Increment global checks counter
+    fetch('https://api.counterapi.dev/v1/linkedin-reality-asalam/checks/up')
+      .then(res => res.json())
+      .then(data => setTotalChecks(data.count))
+      .catch(() => {});
+      
     setIsLoading(false);
   };
 
@@ -83,6 +108,20 @@ export default function App() {
           </div>
           
           <div className="flex items-center gap-6">
+            <div className="hidden lg:flex items-center gap-3 mr-2">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-lg">
+                <Eye className="w-3 h-3 text-slate-400" />
+                <span className="text-[10px] font-bold text-slate-600 tabular-nums">
+                  {visitors ? visitors.toLocaleString() : '...'}
+                </span>
+              </div>
+              <div className="flex items-center gap-1.5 px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-lg">
+                <Activity className="w-3 h-3 text-[#0A66C2]" />
+                <span className="text-[10px] font-bold text-slate-600 tabular-nums">
+                  {totalChecks ? totalChecks.toLocaleString() : '...'}
+                </span>
+              </div>
+            </div>
             <div className="hidden md:flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
               <span>No Synergy</span>
               <span className="w-0.5 h-0.5 bg-slate-300 rounded-full" />
@@ -193,6 +232,25 @@ export default function App() {
                         <p className="text-lg md:text-xl font-medium leading-relaxed tracking-tight text-slate-800 text-center italic">
                           {result.translation}
                         </p>
+                      </div>
+
+                      <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Powered by</span>
+                          <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-tighter ${
+                            result.provider === 'gemini' 
+                              ? 'bg-blue-50 text-[#0A66C2]' 
+                              : 'bg-emerald-50 text-emerald-600'
+                          }`}>
+                            {result.provider}
+                          </span>
+                        </div>
+                        {result.cringeScore > 0 && (
+                          <div className="flex items-center gap-2">
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Cringe Score</span>
+                            <span className="text-[10px] font-bold text-slate-900">{result.cringeScore}%</span>
+                          </div>
+                        )}
                       </div>
                     </div>
 
