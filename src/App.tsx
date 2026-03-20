@@ -17,7 +17,8 @@ import {
   AlertCircle,
   Hash,
   Eye,
-  Activity
+  Activity,
+  Share2
 } from 'lucide-react';
 import { translateText, TranslationMode, Tone, TranslationResult } from './services/aiService';
 
@@ -85,6 +86,13 @@ export default function App() {
     navigator.clipboard.writeText(result.translation);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleShareResult = () => {
+    if (!result) return;
+    const attribution = "\n\n---\n🔎 Generated with LinkedIn Liquidator\nhttps://linkedin-reality.pages.dev";
+    navigator.clipboard.writeText(result.translation + attribution);
+    window.open('https://www.linkedin.com/sharing/share-offsite/?url=https://linkedin-reality.pages.dev', '_blank');
   };
 
   return (
@@ -256,13 +264,20 @@ export default function App() {
                       </div>
                     </div>
 
-                    <div className="flex justify-center">
+                    <div className="flex justify-center gap-3">
                       <button
                         onClick={copyToClipboard}
                         className="flex items-center gap-2 px-6 py-3 bg-white hover:bg-slate-50 rounded-xl text-[11px] font-bold uppercase tracking-widest transition-all border border-slate-200 text-slate-500 hover:text-[#0A66C2] shadow-sm"
                       >
                         {copied ? <Check className="w-3 h-3 text-green-500" /> : <Copy className="w-3 h-3" />}
                         {copied ? 'Copied' : 'Copy Result'}
+                      </button>
+                      <button
+                        onClick={handleShareResult}
+                        className="flex items-center gap-2 px-6 py-3 bg-[#0A66C2] hover:bg-[#004182] rounded-xl text-[11px] font-bold uppercase tracking-widest transition-all text-white shadow-lg shadow-[#0A66C2]/10"
+                      >
+                        <Share2 className="w-3 h-3" />
+                        Post on LinkedIn
                       </button>
                     </div>
                   </motion.div>
