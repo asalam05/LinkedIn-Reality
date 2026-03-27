@@ -54,7 +54,7 @@ export const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({
             <span className="text-[8px] font-black uppercase tracking-[0.2em] text-slate-400 block mb-1.5">
               {mode === 'toReality' ? 'The LinkedIn Post' : 'The Reality'}
             </span>
-            <p className="text-sm text-slate-800 italic font-bold leading-snug line-clamp-3">
+            <p className="text-[13px] text-slate-800 italic font-bold leading-relaxed line-clamp-6">
               {originalText}
             </p>
           </div>
