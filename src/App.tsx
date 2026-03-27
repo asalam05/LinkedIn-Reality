@@ -138,7 +138,7 @@ function App() {
                 {totalChecks?.toLocaleString() || '---'} Checks
               </span>
             </div>
-            <div className="hidden sm:flex items-center gap-2 text-slate-400">
+            <div className="flex items-center gap-2 text-slate-400">
               <Users className="w-3.5 h-3.5" />
               <span className="text-[10px] font-bold uppercase tracking-widest">
                 {visitors?.toLocaleString() || '---'} Visitors
@@ -282,8 +282,8 @@ function App() {
                   exit={{ opacity: 0, scale: 0.95 }}
                   className="w-full flex flex-col items-center"
                 >
-                  <div className="w-full flex justify-center mb-8">
-                    <div className="scale-[0.55] sm:scale-[0.8] md:scale-95 lg:scale-100 origin-top">
+                  <div className="w-full flex justify-center h-[460px] sm:h-[480px] md:h-auto mb-2 md:mb-8">
+                    <div className="scale-[0.8] sm:scale-[0.85] md:scale-95 lg:scale-100 origin-top">
                       <ShareCard 
                         ref={cardRef}
                         translation={result.translation}
@@ -296,18 +296,18 @@ function App() {
                   </div>
 
                   <div ref={resultRef} className="w-full flex flex-col items-center gap-6 pt-6">
-                    <div className="flex flex-wrap justify-center gap-4 px-4">
+                    <div className="flex flex-col sm:flex-row justify-center gap-3 px-4 w-full sm:w-auto">
                       <button
                         onClick={copyImageToClipboard}
                         disabled={isCopyingImage}
-                        className="flex-1 sm:flex-none flex items-center justify-center gap-3 px-10 py-5 bg-[#0A66C2] text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#004182] transition-all active:scale-95 shadow-lg shadow-[#0A66C2]/20"
+                        className="w-full sm:w-auto flex items-center justify-center gap-3 px-10 py-4 bg-[#0A66C2] text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#004182] transition-all active:scale-95 shadow-lg shadow-[#0A66C2]/20"
                       >
                         {isCopyingImage ? <RefreshCw className="w-3 h-3 animate-spin" /> : <Copy className="w-4 h-4" />}
                         Copy for LinkedIn
                       </button>
                       <button
                         onClick={handleNativeShare}
-                        className="flex-1 sm:flex-none flex items-center justify-center gap-3 px-10 py-5 bg-emerald-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-emerald-600 transition-all active:scale-95 shadow-lg shadow-emerald-500/20"
+                        className="w-full sm:w-auto flex items-center justify-center gap-3 px-10 py-4 bg-emerald-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-emerald-600 transition-all active:scale-95 shadow-lg shadow-emerald-500/20"
                       >
                         <Share2 className="w-4 h-4" />
                         Share Card
