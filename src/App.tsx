@@ -131,14 +131,17 @@ function App() {
       {/* Upper Banner */}
       <nav className="sticky top-0 z-[100] w-full bg-white/80 backdrop-blur-xl border-b border-slate-100 px-4 py-2">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 sm:gap-6">
+            <div className="hidden sm:flex items-center justify-center px-2 py-1 bg-slate-100/80 border border-slate-200/60 rounded-md">
+              <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest leading-none">v1.0.1</span>
+            </div>
             <div className="flex items-center gap-2 text-slate-400">
               <Zap className="w-3.5 h-3.5" />
               <span className="text-[10px] font-bold uppercase tracking-widest">
                 {totalChecks?.toLocaleString() || '---'} Checks
               </span>
             </div>
-            <div className="flex items-center gap-2 text-slate-400">
+            <div className="flex items-center gap-2 text-slate-400 h-full">
               <Users className="w-3.5 h-3.5" />
               <span className="text-[10px] font-bold uppercase tracking-widest">
                 {visitors?.toLocaleString() || '---'} Visitors
