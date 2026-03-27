@@ -123,6 +123,14 @@ function App() {
         text: shareText
       };
 
+      // Workaround for apps like LinkedIn that ignore the ShareData text property:
+      // We automatically copy the caption to the user's clipboard so they can just "Paste" it!
+      try {
+        await navigator.clipboard.writeText(shareText);
+      } catch (err) {
+        console.warn('Could not copy text to clipboard automatically', err);
+      }
+
       if (navigator.canShare && navigator.canShare(shareData)) {
         await navigator.share(shareData);
       } else {
