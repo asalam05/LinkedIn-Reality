@@ -33,13 +33,13 @@ function App() {
 
   const fetchStats = async () => {
     try {
-      const vRes = await fetch('https://api.counterapi.dev/v1/linkedin-reality-asalam/visitors');
+      const vRes = await fetch('/api/counter/visitors');
       const vData = await vRes.json();
       setVisitors(vData.count);
     } catch (e) { console.error('Visitors fetch failed'); }
     
     try {
-      const cRes = await fetch('https://api.counterapi.dev/v1/linkedin-reality-asalam/checks');
+      const cRes = await fetch('/api/counter/checks');
       const cData = await cRes.json();
       setTotalChecks(cData.count);
     } catch (e) { console.error('Checks fetch failed'); }
@@ -55,7 +55,7 @@ function App() {
 
   useEffect(() => {
     fetchStats();
-    fetch('https://api.counterapi.dev/v1/linkedin-reality-asalam/visitors/up').catch(() => {});
+    fetch('/api/counter/visitors/up').catch(() => {});
   }, []);
 
   const handleTranslate = async () => {
@@ -66,7 +66,7 @@ function App() {
     try {
       const translation = await translateText(inputText, mode, 'hilarious' as Tone);
       setResult(translation);
-      fetch('https://api.counterapi.dev/v1/linkedin-reality-asalam/checks/up').catch(() => {});
+      fetch('/api/counter/checks/up').catch(() => {});
       setTotalChecks(prev => (prev || 0) + 1);
     } catch (error) {
       console.error('Translation failed:', error);
