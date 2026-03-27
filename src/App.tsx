@@ -177,14 +177,14 @@ function App() {
             <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-800">LinkedIn Reality Check</span>
           </motion.div>
           
-          <h1 className="text-4xl md:text-5xl font-[1000] tracking-tighter text-slate-900 leading-[1] mb-3">
+          <h1 className="text-4xl sm:text-4xl md:text-5xl font-[1000] tracking-tighter text-slate-900 leading-[1.05] mb-4 text-balance px-4">
              {mode === 'toReality' ? (
-                <>DECODE THE <span className="text-[#0A66C2] italic">BRUTAL TRUTH.</span></>
+                <>DECODE THE <br className="block sm:hidden" /><span className="text-[#0A66C2] italic leading-tight">BRUTAL TRUTH.</span></>
               ) : (
-                <>WRITE YOUR <span className="text-emerald-500 italic">BEST POST.</span></>
+                <>WRITE YOUR <br className="block sm:hidden" /><span className="text-emerald-500 italic leading-tight">BEST POST.</span></>
               )}
           </h1>
-          <p className="text-sm md:text-base text-slate-400 font-medium max-w-lg mx-auto leading-relaxed">
+          <p className="text-[13px] sm:text-[15px] md:text-base text-slate-400 font-medium max-w-[280px] sm:max-w-lg mx-auto leading-relaxed text-balance">
             {mode === 'toReality' 
               ? "Paste any post. See what they're actually saying." 
               : "Turn your wins into polished LinkedIn gold."}
