@@ -186,8 +186,8 @@ function App() {
           </h1>
           <p className="text-sm md:text-base text-slate-400 font-medium max-w-lg mx-auto leading-relaxed">
             {mode === 'toReality' 
-              ? "Tired of corporate fluff? Paste any post to see what they're actually saying." 
-              : "Translate your achievements into professional, jargon-packed prestige."}
+              ? "Paste any post. See what they're actually saying." 
+              : "Turn your wins into polished LinkedIn gold."}
           </p>
         </header>
 
