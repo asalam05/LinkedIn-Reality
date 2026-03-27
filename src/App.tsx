@@ -112,7 +112,16 @@ function App() {
       
       if (!blob) throw new Error('Blob is null');
       const file = new File([blob], 'linkedin-reality.png', { type: 'image/png' });
-      const shareData: ShareData = { files: [file], title: 'LinkedIn Reality' };
+      
+      const shareText = mode === 'toReality' 
+        ? 'Just decoded the corporate fluff! 😂 Generate your own at https://linkedin-reality.asifsalam96.com #LinkedInReality #CorporateJargon'
+        : 'Just recoded my reality into corporate LinkedIn gold! ✨ Generate your own at https://linkedin-reality.asifsalam96.com #LinkedInReality #CorporateJargon';
+
+      const shareData: ShareData = { 
+        files: [file], 
+        title: 'LinkedIn Reality Check',
+        text: shareText
+      };
 
       if (navigator.canShare && navigator.canShare(shareData)) {
         await navigator.share(shareData);
