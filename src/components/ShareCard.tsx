@@ -44,7 +44,7 @@ export const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({
       </div>
 
       {/* Main Content Area (Maximized Space) */}
-      <div className="flex-1 flex flex-col items-center justify-center px-6 py-2 overflow-hidden">
+      <div className="flex-1 flex flex-col items-center justify-start pt-10 px-6 pb-6 overflow-hidden">
         
         {/* The Action Cluster (Reduced spacing) */}
         <div className="w-full flex flex-col items-center space-y-3">
@@ -55,7 +55,7 @@ export const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({
               {mode === 'toReality' ? 'The LinkedIn Post' : 'The Reality'}
             </span>
             <p className="text-sm text-slate-800 italic font-bold leading-snug line-clamp-3">
-              "{originalText}"
+              {originalText}
             </p>
           </div>
 
@@ -73,16 +73,12 @@ export const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({
               {getLabel()}
             </span>
             <p className={`${getFontSize(translation)} font-[1000] tracking-tighter text-slate-900`}>
-              "{translation}"
-          </p>
+              {translation}
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Decorative Brand Marks (More subtle) */}
-      <Quote className="absolute top-20 right-4 w-12 h-12 text-[#0A66C2]/5 fill-[#0A66C2]/5 pointer-events-none" />
-      <Quote className="absolute bottom-6 left-4 w-10 h-10 text-[#0A66C2]/5 fill-[#0A66C2]/5 rotate-180 pointer-events-none" />
-      
       {/* Bottom Subtle Bar */}
       <div className="absolute bottom-0 left-0 w-full h-1 bg-slate-100/30" />
     </div>
