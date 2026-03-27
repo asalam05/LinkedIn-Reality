@@ -132,9 +132,9 @@ function App() {
       <nav className="sticky top-0 z-[100] w-full bg-white/80 backdrop-blur-xl border-b border-slate-100 px-4 py-2">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2 px-3 py-1 bg-[#0A66C2]/5 rounded-full border border-[#0A66C2]/10">
-              <Zap className="w-3.5 h-3.5 text-[#0A66C2]" />
-              <span className="text-[10px] font-black uppercase tracking-wider text-[#0A66C2]">
+            <div className="flex items-center gap-2 text-slate-400">
+              <Zap className="w-3.5 h-3.5" />
+              <span className="text-[10px] font-bold uppercase tracking-widest">
                 {totalChecks?.toLocaleString() || '---'} Checks
               </span>
             </div>
