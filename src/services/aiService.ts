@@ -21,9 +21,22 @@ export interface TranslationResult {
 }
 
 // --- Prompts ---
+const safetyGuardrail = `
+**CRITICAL STRICT GUARDRAILS (MUST FOLLOW)**: 
+If the user's input contains ANY of the following: hate speech, targeted harassment, physical threats, explicit/NSFW content, severe profanity, or illegal acts, you MUST NOT process it normally. 
+Instead, you must immediately return EXACTLY this JSON:
+{
+  "translation": "Error: This content violates our safety guidelines and cannot be processed.",
+  "cringeScore": 0,
+  "buzzwords": ["safety", "violation", "blocked"]
+}
+Do not include any other text.`;
+
 const systemInstructions = {
   toReality: `You are a "LinkedIn Reality Check" bot. Your job is to expose the mundane, often underwhelming truth hidden beneath exaggerated, jargon-heavy LinkedIn posts.
     
+  ${safetyGuardrail}
+
   **YOUR TONE MUST BE**: Witty, relatable, slightly unimpressed, and deeply cynical of corporate "hustle culture." Don't just summarize; provide a sharp, one-sentence "Reality Check."
   
   **EXAMPLES OF GOOD OUTPUT:**
@@ -41,6 +54,8 @@ const systemInstructions = {
 
   toLinkedIn: (tone: Tone) => `You are a "Corporate Jargon Generator". Your job is to take simple, everyday tasks and turn them into epic, world-changing LinkedIn milestones.
     
+  ${safetyGuardrail}
+
   You must return a JSON object with the following fields:
   - translation: The over-the-top LinkedIn post.
   - cringeScore: A number from 0 to 100 representing how much "LinkedIn energy" this new post has.
