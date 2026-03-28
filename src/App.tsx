@@ -22,6 +22,7 @@ function App() {
   const [inputText, setInputText] = useState('');
   const [mode, setMode] = useState<TranslationMode>('toReality');
   const [result, setResult] = useState<TranslationResult | null>(null);
+  const [submittedText, setSubmittedText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isCopyingImage, setIsCopyingImage] = useState(false);
   const [imageCopied, setImageCopied] = useState(false);
@@ -63,9 +64,11 @@ function App() {
     setIsLoading(true);
     setResult(null);
     setImageCopied(false);
+    const textToTranslate = inputText;
     try {
-      const translation = await translateText(inputText, mode, 'hilarious' as Tone);
+      const translation = await translateText(textToTranslate, mode, 'hilarious' as Tone);
       setResult(translation);
+      setSubmittedText(textToTranslate);
       fetch('/api/counter/checks/up').catch(() => {});
       setTotalChecks(prev => (prev || 0) + 1);
     } catch (error) {
@@ -257,7 +260,6 @@ function App() {
                        {(mode === 'toReality' ? [
                         { label: "The Grind", text: "While you were sleeping this weekend, I was closing 3 deals. Sleep is just time you're not using to outwork your competition." },
                         { label: "Speechless", text: "I'm so incredibly humbled, honored, and completely speechless to announce I've been recognized as a Top 5 Global Visionary Leader." },
-                        { label: "The Candidate", text: "A candidate sent me a cold email. I ignored it. He then camped outside my office for 3 days. That relentless dedication is why I hired him." },
                         { label: "The Barista", text: "The barista got my order wrong. Instead of complaining, I helped her restructure the café's supply chain. Here's what she taught me about B2B SaaS." },
                         { label: "Layoffs", text: "It breaks my heart to announce we are parting ways with 15% of our exceptional family to optimize our strategic realignment and preserve runway." },
                       ] : [
@@ -326,7 +328,7 @@ function App() {
                       <ShareCard 
                         ref={cardRef}
                         translation={result.translation}
-                        originalText={inputText}
+                        originalText={submittedText}
                         cringeScore={result.cringeScore}
                         mode={mode}
                         provider={result.provider}
