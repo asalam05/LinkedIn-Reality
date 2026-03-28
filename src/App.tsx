@@ -255,11 +255,10 @@ function App() {
                     <span className="text-[9px] font-black uppercase tracking-widest text-slate-400 ml-2">Try an Example:</span>
                     <div className="flex flex-wrap gap-2">
                        {(mode === 'toReality' ? [
-                        { label: "Layoffs", text: "We've made the difficult decision to optimize our workforce for long-term scalability." },
-                        { label: "The Grind", text: "Starting my day at 4 AM. Sleep is just time you're not using to outwork your competition." },
-                        { label: "Next Chapter", text: "I'm incredibly humbled to share that I'm stepping away to pursue exciting new opportunities." },
-                        { label: "The Flex", text: "So honored that after 10 years of relentless hustle, I've finally been recognized as a Top Voice." },
-                        { label: "Late Nights", text: "Massive shoutout to my Rockstar team for pulling a 16-hour shift this weekend to hit our targets." },
+                        { label: "Crying CEO", text: "Today was the hardest day of my life. I had to let go of 10% of our family. Here's a selfie of me crying." },
+                        { label: "B2B Pigeon", text: "I watched a pigeon eat a French fry today. Here's what that taught me about B2B SaaS sales funnels." },
+                        { label: "Toxic Boss", text: "If you aren't thinking about our quarterly KPIs during your weekend off, do you even care about our mission?" },
+                        { label: "Humblebrag", text: "So incredibly humbled and honored to announce I've been recognized as a Top Visionary Leader under 30." },
                       ] : [
                         { label: "Hired", text: "I just got hired at a tech startup." },
                         { label: "Wrote Email", text: "I finally replied to that email." },
