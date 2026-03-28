@@ -51,7 +51,7 @@ export const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({
       <div className="flex-1 flex flex-col items-center justify-start pt-6 px-6 pb-4 overflow-hidden">
         
         {/* The Action Cluster */}
-        <div className="w-full flex flex-col items-center space-y-4">
+        <div className="w-full flex flex-col items-center gap-1.5">
           
           {/* Section 1: Input */}
           <div className="w-full p-4 bg-slate-50/80 rounded-2xl border border-slate-100 text-center">
@@ -64,8 +64,8 @@ export const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({
           </div>
 
           {/* Transition Arrow */}
-          <div className="flex flex-col items-center justify-center py-0.5">
-            <div className="w-px h-5 bg-gradient-to-b from-slate-200 to-[#0A66C2]" />
+          <div className="flex flex-col items-center justify-center">
+            <div className="w-px h-3 bg-gradient-to-b from-slate-200 to-[#0A66C2]" />
             <div className="bg-[#0A66C2] p-1.5 rounded-full shadow-lg shadow-[#0A66C2]/10 -mt-0.5 transform scale-90">
               <ArrowDown className="w-4 h-4 text-white" />
             </div>
