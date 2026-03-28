@@ -349,10 +349,43 @@ function App() {
                   </div>
                 </motion.div>
               ) : (
-                <div className="py-20 text-center opacity-30">
-                  <Terminal className="w-12 h-12 mx-auto mb-4 text-slate-300" />
-                  <p className="text-[10px] font-black uppercase tracking-widest">Awaiting Simulation</p>
-                </div>
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="w-full max-w-sm mx-auto mt-4 md:mt-12"
+                >
+                  <div className="p-8 bg-white border border-slate-100 rounded-[32px] shadow-xl shadow-slate-200/40 relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#0A66C2] to-emerald-400" />
+                    <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-slate-800 mb-6 flex items-center gap-2">
+                       <Sparkles className="w-4 h-4 text-[#0A66C2]" />
+                       How It Works
+                    </h3>
+                    
+                    <div className="space-y-6">
+                      <div className="flex items-start gap-4">
+                        <div className="w-6 h-6 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center shrink-0 font-black text-[10px]">1</div>
+                        <div>
+                          <h4 className="font-bold text-slate-800 text-sm">Choose Your Vibe</h4>
+                          <p className="text-xs text-slate-500 mt-1 leading-relaxed">Pick <strong className="text-[#0A66C2]">Unmask Truth</strong> to decode cringe corporate posts, or <strong className="text-emerald-600">Jargonizer</strong> to rewrite your boring day into a viral LinkedIn essay.</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-4">
+                        <div className="w-6 h-6 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center shrink-0 font-black text-[10px]">2</div>
+                        <div>
+                          <h4 className="font-bold text-slate-800 text-sm">Let AI Cook</h4>
+                          <p className="text-xs text-slate-500 mt-1 leading-relaxed">Tap one of the examples or paste your own text. Our AI generates the translation instantly.</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-4">
+                        <div className="w-6 h-6 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center shrink-0 font-black text-[10px]">3</div>
+                        <div>
+                          <h4 className="font-bold text-slate-800 text-sm">Share the Roast</h4>
+                          <p className="text-xs text-slate-500 mt-1 leading-relaxed">Copy your custom card as a beautiful high-res image to share directly to your feed.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
               )}
             </AnimatePresence>
           </div>
