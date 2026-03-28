@@ -15,13 +15,16 @@ export const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({
   mode
 }, ref) => {
   // Ultra-Readable Scale for 4:5 Aspect Ratio
-  const getFontSize = (text: string) => {
+  const getTypography = (text: string) => {
     const len = text.length;
-    if (len < 60) return 'text-[44px] leading-[1.05]';
-    if (len < 120) return 'text-[36px] leading-[1.1]';
-    if (len < 200) return 'text-[28px] leading-[1.2]';
-    if (len < 300) return 'text-[22px] leading-[1.25]';
-    return 'text-[18px] leading-[1.3]';
+    if (len < 60) return 'text-[44px] leading-[1.05] font-[1000] tracking-tight';
+    if (len < 120) return 'text-[36px] leading-[1.1] font-[1000] tracking-tight';
+    if (len < 200) return 'text-[28px] leading-[1.2] font-[900] tracking-tight';
+    if (len < 300) return 'text-[22px] leading-[1.25] font-[800] tracking-tight';
+    if (len < 400) return 'text-[18px] leading-[1.3] font-bold tracking-normal';
+    if (len < 550) return 'text-[15px] leading-[1.4] font-bold tracking-normal';
+    if (len < 750) return 'text-[13px] leading-[1.4] font-semibold tracking-normal';
+    return 'text-[11px] leading-[1.5] font-medium tracking-normal';
   };
 
   const getLabel = () => {
@@ -73,7 +76,7 @@ export const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({
             <span className="text-[11px] font-black uppercase tracking-[0.2em] text-[#0A66C2] block mb-2">
               {getLabel()}
             </span>
-            <p className={`${getFontSize(translation)} font-[1000] tracking-tight text-slate-900`}>
+            <p className={`${getTypography(translation)} text-slate-900 line-clamp-[16]`}>
               {translation}
             </p>
           </div>
