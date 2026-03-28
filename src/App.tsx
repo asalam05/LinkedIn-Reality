@@ -255,10 +255,11 @@ function App() {
                     <span className="text-[9px] font-black uppercase tracking-widest text-slate-400 ml-2">Try an Example:</span>
                     <div className="flex flex-wrap gap-2">
                        {(mode === 'toReality' ? [
-                        { label: "Crying CEO", text: "Today was the hardest day of my life. I had to let go of 10% of our family. Here's a selfie of me crying." },
-                        { label: "B2B Pigeon", text: "I watched a pigeon eat a French fry today. Here's what that taught me about B2B SaaS sales funnels." },
-                        { label: "Toxic Boss", text: "If you aren't thinking about our quarterly KPIs during your weekend off, do you even care about our mission?" },
-                        { label: "Humblebrag", text: "So incredibly humbled and honored to announce I've been recognized as a Top Visionary Leader under 30." },
+                        { label: "The Grind", text: "While you were sleeping this weekend, I was closing 3 deals. Sleep is just time you're not using to outwork your competition." },
+                        { label: "Speechless", text: "I'm so incredibly humbled, honored, and completely speechless to announce I've been recognized as a Top 5 Global Visionary Leader." },
+                        { label: "The Candidate", text: "A candidate sent me a cold email. I ignored it. He then camped outside my office for 3 days. That relentless dedication is why I hired him." },
+                        { label: "The Barista", text: "The barista got my order wrong. Instead of complaining, I helped her restructure the café's supply chain. Here's what she taught me about B2B SaaS." },
+                        { label: "Layoffs", text: "It breaks my heart to announce we are parting ways with 15% of our exceptional family to optimize our strategic realignment and preserve runway." },
                       ] : [
                         { label: "Hired", text: "I just got hired at a tech startup." },
                         { label: "Wrote Email", text: "I finally replied to that email." },
