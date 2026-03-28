@@ -294,7 +294,20 @@ function App() {
           {/* Result Column */}
           <div className="lg:col-span-12 xl:col-span-6 flex flex-col items-center">
             <AnimatePresence mode="wait">
-              {result ? (
+              {isLoading ? (
+                <motion.div
+                  key="loading"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  className="w-full h-full min-h-[400px] flex flex-col items-center justify-center"
+                >
+                  <RefreshCw className="w-10 h-10 mb-6 text-[#0A66C2] animate-spin opacity-80" />
+                  <p className="text-[11px] font-black uppercase tracking-[0.2em] text-slate-500 animate-pulse">
+                    {mode === 'toReality' ? 'Decoding Reality...' : 'Generating Fluff...'}
+                  </p>
+                </motion.div>
+              ) : result ? (
                 <motion.div
                   key="result"
                   initial={{ opacity: 0, scale: 0.95 }}
