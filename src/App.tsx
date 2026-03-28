@@ -256,10 +256,16 @@ function App() {
                     <div className="flex flex-wrap gap-2">
                        {(mode === 'toReality' ? [
                         { label: "Layoffs", text: "We've made the difficult decision to optimize our workforce for long-term scalability." },
-                        { label: "Synergy", text: "Leveraging cross-functional synergies to redefine our core mission architecture." },
+                        { label: "The Grind", text: "Starting my day at 4 AM. Sleep is just time you're not using to outwork your competition." },
+                        { label: "Next Chapter", text: "I'm incredibly humbled to share that I'm stepping away to pursue exciting new opportunities." },
+                        { label: "The Flex", text: "So honored that after 10 years of relentless hustle, I've finally been recognized as a Top Voice." },
+                        { label: "Late Nights", text: "Massive shoutout to my Rockstar team for pulling a 16-hour shift this weekend to hit our targets." },
                       ] : [
                         { label: "Hired", text: "I just got hired at a tech startup." },
+                        { label: "Wrote Email", text: "I finally replied to that email." },
                         { label: "Bug Fix", text: "I fixed the broken checkout button." },
+                        { label: "Taking PTO", text: "I am taking a week off from work." },
+                        { label: "Surviving", text: "I managed to stay awake during the 3-hour company meeting." },
                       ]).map((ex, i) => (
                         <button
                           key={i}
