@@ -302,8 +302,8 @@ function App() {
                   exit={{ opacity: 0, scale: 0.95 }}
                   className="w-full flex flex-col items-center"
                 >
-                  <div className="w-full flex justify-center h-[430px] min-[400px]:h-[500px] sm:h-[510px] md:h-auto mb-2 md:mb-8">
-                    <div className="scale-[0.76] min-[400px]:scale-[0.88] sm:scale-[0.9] md:scale-100 origin-top">
+                  <div className="w-full flex justify-center h-[370px] min-[375px]:h-[430px] min-[400px]:h-[500px] sm:h-[510px] md:h-[562px] xl:h-[562px] mb-2 md:mb-8">
+                    <div className="scale-[0.65] min-[375px]:scale-[0.76] min-[400px]:scale-[0.88] sm:scale-[0.9] md:scale-100 origin-top">
                       <ShareCard 
                         ref={cardRef}
                         translation={result.translation}

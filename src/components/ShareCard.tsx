@@ -32,7 +32,7 @@ export const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({
     <div 
       ref={ref} 
       id="capture-card" 
-      className="w-full max-w-[450px] aspect-[4/5] bg-white border border-slate-200 shadow-2xl overflow-hidden flex flex-col relative font-sans shrink-0 rounded-lg"
+      className="w-[450px] aspect-[4/5] bg-white border border-slate-200 shadow-2xl overflow-hidden flex flex-col relative font-sans shrink-0 rounded-lg"
     >
       {/* App Branding Header (Stronger) */}
       <div className="bg-gradient-to-r from-[#0A66C2] to-[#004182] px-6 py-5 flex items-center justify-center text-white shadow-sm z-10 shrink-0 border-b border-[#0A66C2]/20">
