@@ -9,14 +9,33 @@ interface ShareCardProps {
   provider: string;
 }
 
-export const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({ 
-  translation, 
+export const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({
+  translation,
   originalText,
   mode
 }, ref) => {
-  // Ultra-Readable Scale for 4:5 Aspect Ratio
-  const getTypography = (text: string) => {
+  // Adjusts input text size to prevent long LinkedIn posts from eating all vertical space
+  const getInputTypography = (text: string) => {
     const len = text.length;
+    if (len < 150) return 'text-[15px] leading-relaxed';
+    if (len < 300) return 'text-[13px] leading-relaxed';
+    return 'text-[12px] leading-snug';
+  };
+
+  // Adjusts output text scale based on mode
+  const getTypography = (text: string, currentMode: 'toReality' | 'toLinkedIn') => {
+    const len = text.length;
+    
+    if (currentMode === 'toReality') {
+      // Input takes massive space, scale down output faster to prevent cutoff
+      if (len < 40) return 'text-[32px] leading-[1.1] font-[1000] tracking-tight';
+      if (len < 80) return 'text-[26px] leading-[1.15] font-[900] tracking-tight';
+      if (len < 150) return 'text-[20px] leading-[1.2] font-[800] tracking-tight';
+      if (len < 250) return 'text-[16px] leading-[1.25] font-bold tracking-normal';
+      return 'text-[14px] leading-[1.3] font-semibold tracking-normal';
+    }
+
+    // toLinkedIn mode (input is short, output has plenty of space)
     if (len < 60) return 'text-[44px] leading-[1.05] font-[1000] tracking-tight';
     if (len < 120) return 'text-[36px] leading-[1.1] font-[1000] tracking-tight';
     if (len < 200) return 'text-[28px] leading-[1.2] font-[900] tracking-tight';
@@ -32,9 +51,9 @@ export const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({
   };
 
   return (
-    <div 
-      ref={ref} 
-      id="capture-card" 
+    <div
+      ref={ref}
+      id="capture-card"
       className="w-[450px] aspect-[4/5] bg-white border border-slate-200 shadow-2xl overflow-hidden flex flex-col relative font-sans shrink-0 rounded-lg"
     >
       {/* App Branding Header (Stronger) */}
@@ -49,16 +68,16 @@ export const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col items-center justify-start pt-6 px-6 pb-4 overflow-hidden">
-        
+
         {/* The Action Cluster */}
         <div className="w-full flex flex-col items-center gap-1.5">
-          
+
           {/* Section 1: Input */}
           <div className="w-full p-4 bg-slate-50/80 rounded-2xl border border-slate-100 text-center">
             <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 block mb-2">
               {mode === 'toReality' ? 'The LinkedIn Post' : 'The Reality'}
             </span>
-            <p className="text-[15px] text-slate-800 italic font-bold leading-relaxed line-clamp-6">
+            <p className={`${getInputTypography(originalText)} text-slate-800 italic font-bold line-clamp-6`}>
               {originalText}
             </p>
           </div>
@@ -76,7 +95,7 @@ export const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({
             <span className="text-[11px] font-black uppercase tracking-[0.2em] text-[#0A66C2] block mb-2">
               {getLabel()}
             </span>
-            <p className={`${getTypography(translation)} text-slate-900 line-clamp-[16]`}>
+            <p className={`${getTypography(translation, mode)} text-slate-900 line-clamp-[16]`}>
               {translation}
             </p>
           </div>
