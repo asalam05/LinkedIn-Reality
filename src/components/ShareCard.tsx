@@ -67,38 +67,35 @@ export const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col items-center justify-start pt-6 px-6 pb-4 overflow-hidden">
+      <div className="flex-1 flex flex-col pt-4 px-6 pb-3 overflow-hidden min-h-0">
 
-        {/* The Action Cluster */}
-        <div className="w-full flex flex-col items-center gap-1.5">
+        {/* Section 1: Input — fixed max proportion */}
+        <div className="w-full p-3 bg-slate-50/80 rounded-2xl border border-slate-100 text-center shrink-0">
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 block mb-1.5">
+            {mode === 'toReality' ? 'The LinkedIn Post' : 'The Reality'}
+          </span>
+          <p className={`${getInputTypography(originalText)} text-slate-800 italic font-bold line-clamp-5`}>
+            {originalText}
+          </p>
+        </div>
 
-          {/* Section 1: Input */}
-          <div className="w-full p-4 bg-slate-50/80 rounded-2xl border border-slate-100 text-center">
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 block mb-2">
-              {mode === 'toReality' ? 'The LinkedIn Post' : 'The Reality'}
-            </span>
-            <p className={`${getInputTypography(originalText)} text-slate-800 italic font-bold line-clamp-6`}>
-              {originalText}
-            </p>
+        {/* Transition Arrow */}
+        <div className="flex flex-col items-center justify-center py-1 shrink-0">
+          <div className="w-px h-3 bg-gradient-to-b from-slate-200 to-[#0A66C2]" />
+          <div className="bg-[#0A66C2] p-1.5 rounded-full shadow-lg shadow-[#0A66C2]/10 -mt-0.5 transform scale-90">
+            <ArrowDown className="w-4 h-4 text-white" />
           </div>
+        </div>
 
-          {/* Transition Arrow */}
-          <div className="flex flex-col items-center justify-center">
-            <div className="w-px h-3 bg-gradient-to-b from-slate-200 to-[#0A66C2]" />
-            <div className="bg-[#0A66C2] p-1.5 rounded-full shadow-lg shadow-[#0A66C2]/10 -mt-0.5 transform scale-90">
-              <ArrowDown className="w-4 h-4 text-white" />
-            </div>
-          </div>
-
-          {/* Section 2: Output */}
-          <div className="w-full text-center px-1">
-            <span className="text-[11px] font-black uppercase tracking-[0.2em] text-[#0A66C2] block mb-2">
-              {getLabel()}
-            </span>
-            <p className={`${getTypography(translation, mode)} text-slate-900 line-clamp-[16]`}>
-              {translation}
-            </p>
-          </div>
+        {/* Section 2: Output — takes all remaining space */}
+        <div className="flex-1 min-h-0 w-full text-center px-1 flex flex-col justify-center overflow-hidden">
+          <span className="text-[11px] font-black uppercase tracking-[0.2em] text-[#0A66C2] block mb-2 shrink-0">
+            {getLabel()}
+          </span>
+          <p className={`${getTypography(translation, mode)} text-slate-900 overflow-hidden`}
+             style={{ display: '-webkit-box', WebkitLineClamp: 12, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+            {translation}
+          </p>
         </div>
       </div>
 
